@@ -5,6 +5,7 @@
 # FSx/N Secrets Manager Password Rotator
 # June 25th, 2023, @mcaws
 # March 25, 2024, @tjm
+# May 21, 2004 @tjm
 #
 ################################################################################
 
@@ -68,7 +69,7 @@ def create_secret(service_client, arn, token):
         logger.info(f"CreateSecret: There already was a PENDING secret {check_pending_secret} for {arn}")
 
     except service_client.exceptions.ResourceNotFoundException:
-        exclude_characters = os.environ['EXCLUDE_CHARACTERS'] if 'EXCLUDE_CHARACTERS' in os.environ else '/@"\'\\'
+        exclude_characters = os.environ['EXCLUDE_CHARACTERS'] if 'EXCLUDE_CHARACTERS' in os.environ else '"\\\"\',./:;<>?[]{|}~`@'
         passwd = service_client.get_random_password(PasswordLength=16, ExcludeCharacters=exclude_characters)
 
         mysecret = '{"username":"fsxadmin","password":"' + str(passwd['RandomPassword']) + '"}'
