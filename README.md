@@ -8,10 +8,9 @@
 5. [Deployment steps](#deployment-steps)
 6. [Post deployment steps](#post-deployment-steps)
 7. [Undeployment steps](#undeployment-steps) 
-8. [Troubleshooting](#troubleshooting)
-9. [Customer responsibility](#customer-responsibility)
-10. [Feedback](#feedback)
-11. [Notices](#notices)
+8. [Customer responsibility](#customer-responsibility)
+9. [Feedback](#feedback)
+10. [Notices](#notices)
 
 ---
 
@@ -46,7 +45,7 @@ You can customize these parameters to meet your organization’s requirements fo
 
 We then use AWS Secrets Manager password rotation services to automate password changes. Rotation is the process of periodically updating a secret. When you enable secret rotation, the credentials in the secret are automatically rotated by other AWS Services or AWS Lambda functions.
 
-![Architecture Diagram](./images/AWS-Reference-Architecture-FSxN-Password-Rotation_v5_03SEP24.png)
+![Architecture Diagram](./images/ref-arch.png) 
 
 Figure 1. Automating Password Rotations for Amazon FSx For NetApp ONTAP
 
@@ -89,7 +88,7 @@ The following table provides a sample cost breakdown for deploying this guidance
 | [AWS CloudFormation](https://aws.amazon.com/cloudformation/) | Speed up cloud provisioning with infrastructure as code | \$0.00 |
 |**Total estimated cost per month:**|  | **\$ 3.40 per file system** |
 
-This detailed cost breakdown can be found in this [AWS Pricing Calculator estimate](https://calculator.aws/#/estimate?id=fcd2f534a6c37f33a0a9436234b4f4f1ac48d9ad) 
+This detailed cost breakdown can be found in this [AWS Pricing Calculator estimate](https://calculator.aws/#/estimate?id=4b78d2f27e14a10c47230784e899050b4dc9b61e)
 
 <a name="deployment-options"></a>
 ## Deployment Options
@@ -178,10 +177,6 @@ aws cloudformation delete-stack --stack-name FSxNPasswordRotationLambda
 Or if you have named the stack something else, replace "FSxNPasswordRotationLambda" with that stack name.
 
 **Once deleted, your password no longer automatically rotates.**
-
----
-<a name="troubleshooting"></a>
-## Troubleshooting
 
 ---
 
