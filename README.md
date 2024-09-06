@@ -68,7 +68,7 @@ The guidance encompasses several integrated components, with the AWS Secret's Ma
 While utilizing this guidance sample code doesn't incur any direct charges, please be aware that you will incur costs for the AWS services or resources activated by this guidance architecture. The cost for the [AWS FSx for NetApp ONTAP file system](https://aws.amazon.com/fsx/netapp-ontap/) is out side of the scope of this guidance. There is no direct charge to invoke the password change API for these file systems.
 ### Cost
 
-You are responsible for the cost of the AWS services used while running this guidance. As of September 2024, the cost for running this guidance with the default settings in the US East-2 (Ohio) Region is approximately **\$ 3.40 per month**, assuming **10 password read attempts/downloaded per month**.
+You are responsible for the cost of the AWS services used while running this guidance. As of September 2024, the cost for running this guidance with the default settings in the US East-1 (US N. Virginia) Region is approximately **\$ 3.40 per month**, assuming **10 password read attempts/downloaded per month**.
 
 This guidance uses [Serverless services](https://aws.amazon.com/serverless/), which use a on-demand billing model - costs are incurred with usage of the deployed resources. Refer to the [Sample cost table](#sample-cost-table) for a service-by-service cost breakdown.
 
