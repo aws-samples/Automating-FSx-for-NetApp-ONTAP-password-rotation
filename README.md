@@ -94,7 +94,7 @@ This detailed cost breakdown can be found in this [AWS Pricing Calculator estima
 <a name="deployment-options"></a>
 ## Deployment Options
 
-- Click on the following link for a Console Launch via [Cloud Formation Template](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=FSxAdminPasswordRotator&templateURL=https://awsstorageblogresources.s3.us-west-2.amazonaws.com/blog1343/AWSLambdaPasswordRotation.yaml)
+- Click on the following link for a Console Launch via  [![Cloud Formation Template](./images/cf_button.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=FSxAdminPasswordRotator&templateURL=https://awsstorageblogresources.s3.us-west-2.amazonaws.com/blog1343/AWSLambdaPasswordRotation.yaml)
 - Launch via [AWS CloudShell](https://aws.amazon.com/cloudshell/)
 ---
 
