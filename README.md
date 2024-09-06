@@ -46,7 +46,7 @@ You can customize these parameters to meet your organization’s requirements fo
 
 We then use AWS Secrets Manager password rotation services to automate password changes. Rotation is the process of periodically updating a secret. When you enable secret rotation, the credentials in the secret are automatically rotated by other AWS Services or AWS Lambda functions.
 
-![Architecture Diagram](./images/automate-passwd-rotate.jpg)
+![Architecture Diagram](./images/AWS-Reference-Architecture-FSxN-Password-Rotation_v5_03SEP24.png)
 
 Figure 1. Automating Password Rotations for Amazon FSx For NetApp ONTAP
 
