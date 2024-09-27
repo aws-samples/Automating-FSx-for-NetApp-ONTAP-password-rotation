@@ -1,11 +1,8 @@
-# Copyright 2018 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# Copyright 2024 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: MIT-0
 ################################################################################
 #
 # FSx/N Secrets Manager Password Rotator
-# June 25th, 2023, @mcaws
-# March 25, 2024, @tjm
-# May 21, 2004 @tjm
 #
 ################################################################################
 
@@ -30,8 +27,8 @@ def lambda_handler(event, context):
 
     metadata = service_client.describe_secret(SecretId=arn)
     if not metadata['RotationEnabled']:
-        logger.error("Secret %s is not enabled for rotation" % arn)
-        raise ValueError("Secret %s is not enabled for rotation" % arn)
+        logger.error("Secret %s is not enabled for rotation." % arn)
+        raise ValueError("Secret %s is not enabled for rotation." % arn)
     versions = metadata['VersionIdsToStages']
     if token not in versions:
         logger.error("Secret version %s has no stage for rotation of secret %s." % (token, arn))
@@ -66,7 +63,7 @@ def lambda_handler(event, context):
 def create_secret(service_client, arn, token):
     try:
         check_pending_secret = service_client.get_secret_value(SecretId=arn, VersionId=token, VersionStage="AWSPENDING")
-        logger.info(f"CreateSecret: There already was a PENDING secret {check_pending_secret} for {arn}")
+        logger.info(f"CreateSecret: There already was a PENDING secret {check_pending_secret} for {arn}.")
 
     except service_client.exceptions.ResourceNotFoundException:
         exclude_characters = os.environ['EXCLUDE_CHARACTERS'] if 'EXCLUDE_CHARACTERS' in os.environ else '"\\\"\',./:;<>?[]{|}~`@'
@@ -86,7 +83,7 @@ def set_secret(service_client, arn, token):
     desc_fsx_service_client = boto3.client('fsx')
     response = desc_fsx_service_client.describe_file_systems()
 
-    logger.debug("Response from fsx DescribeFileSystems call is: %s" % (response))
+    logger.debug("Response from fsx DescribeFileSystems call is: %s." % (response))
 
     fsx_service_client = boto3.client('fsx')
     response = fsx_service_client.update_file_system(
@@ -101,7 +98,7 @@ def set_secret(service_client, arn, token):
 def test_secret(service_client, arn, token):
     testfsx_service_client = boto3.client('fsx')
     response = testfsx_service_client.describe_file_systems()
-    logger.info("Response from fsx DescribeFileSystems call is: %s" % (response))
+    logger.info("Response from fsx DescribeFileSystems call is: %s." % (response))
     testfsx_service_client.close()
     return 0 
 
@@ -111,7 +108,7 @@ def finish_secret(service_client, arn, token):
     for version in metadata["VersionIdsToStages"]:
         if "AWSCURRENT" in metadata["VersionIdsToStages"][version]:
             if version == token:
-                logger.info("finish_secret: Version %s has already been marked CURRENT for %s" % (version, arn))
+                logger.info("finish_secret: Version %s has already been marked CURRENT for %s." % (version, arn))
                 return
             current_version = version
             break
